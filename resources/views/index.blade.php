@@ -153,7 +153,18 @@ data-bs-backdrop="static" aria-hidden="true">
                 processData: false,
                 contentType: false,
                 success: function(res){
-                    console.log(res);
+                    if(res.status === 200){
+                        // add sweet alert 
+                        swal.fire(
+                            'Added!',
+                            'Employee Added Successfully!',
+                            'success'
+                        )
+                    }
+
+                    $("#add_employee_btn").text('Add Employee');
+                    $("#add_employee_form")[0].reset();
+                    $("#addEmployeeModal").modal('hide');
                 }
             });
         })
