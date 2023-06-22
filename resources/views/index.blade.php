@@ -137,6 +137,19 @@ data-bs-backdrop="static" aria-hidden="true">
 
 
     <script>
+        // fetch all employees ajax request
+        function fetchAllEmplyees(){
+            $.ajax({
+                url: '{{ route('fetchAll') }}',
+                method: 'get',
+                success: function(res){
+                    $("#show_all_employees").html(res);
+                }
+            })
+        }
+
+        fetchAllEmplyees();
+
         //add new employee ajax requedt
 
         $("#add_employee_form").submit(function(e){
