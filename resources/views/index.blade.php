@@ -113,7 +113,6 @@ data-bs-backdrop="static" aria-hidden="true">
 </div>
 {{-- edit employee modal end --}}
 
-<body class="bg-light">
 <div class="container">
   <div class="row my-5">
     <div class="col-lg-12">
@@ -135,5 +134,29 @@ data-bs-backdrop="static" aria-hidden="true">
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/v/bs5/dt-1.13.4/datatables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script>
+        //add new employee ajax requedt
+
+        $("#add_employee_form").submit(function(e){
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            $("#add_employee_btn").text('Adding...');
+
+            $.ajax({
+                url: '{{ route('store') }}',
+                method: 'post',
+                data: formData,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success: function(res){
+                    console.log(res);
+                }
+            });
+        })
+    </script>
 </body>
 </html>
