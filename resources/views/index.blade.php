@@ -117,7 +117,7 @@ data-bs-backdrop="static" aria-hidden="true">
   <div class="row my-5">
     <div class="col-lg-12">
       <div class="card shadow">
-        <div class="card-header bg-danger d-flex justify-content-between align-items-center">
+        <div class="card-header bg-success d-flex justify-content-between align-items-center">
           <h3 class="text-light">Manage Employees</h3>
           <button class="btn btn-light" data-bs-toggle="modal" data-bs-target="#addEmployeeModal"><i
               class="bi-plus-circle me-2"></i>Add New Employee</button>
