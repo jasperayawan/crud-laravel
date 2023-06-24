@@ -60,7 +60,7 @@ class EmployeeController extends Controller
                     <td>'.$emp->id.'</td>
                     <td><img src="storage/images/'.$emp->avatar.'" width="50" 
                         class="img-thumbnail rounded-circle"/></td>
-                    <td>'.$emp->first_name.''.$emp->last_name.'</td>
+                    <td>'.$emp->first_name.' '.$emp->last_name.'</td>
                     <td>'.$emp->email.'</td>
                     <td>'.$emp->post.'</td>
                     <td>'.$emp->email.'</td>
