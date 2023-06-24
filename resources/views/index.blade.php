@@ -232,7 +232,17 @@ data-bs-backdrop="static" aria-hidden="true">
             processData: false,
             contentType: false,
             success: function(res){
-              console.log(res)
+              if(res.status == 200){
+                Swal.fire(
+                  'Updated!',
+                  'Employee Updated Successfully',
+                  'success'
+                )
+                fetchAllEmplyees();
+              }
+              $("#edit_employee_btn").text('Update Employee');
+              $("#edit_employee_form")[0].reset();
+              $("#editEmployeeModal").modal('hide');
             }
           })
         })
