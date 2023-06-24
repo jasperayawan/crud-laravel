@@ -127,4 +127,13 @@ class EmployeeController extends Controller
             'status' => 200
         ]);
     }
+
+    // handle delete employee ajax request
+    public function delete(Request $request){
+        $id = $request->id;
+        $emp = Employee::find($id);
+        if(Storage::delete('public/images/'.$emp->avatar)){
+            Employee::destroy($id);
+        }
+    }
 }
