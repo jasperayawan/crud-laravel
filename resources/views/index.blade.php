@@ -144,6 +144,12 @@ data-bs-backdrop="static" aria-hidden="true">
                 method: 'get',
                 success: function(res){
                     $("#show_all_employees").html(res);
+
+                    // let's use datatables
+
+                    $("table").DataTable({
+                      order: [0, 'desc']
+                    })
                 }
             })
         }
@@ -173,6 +179,8 @@ data-bs-backdrop="static" aria-hidden="true">
                             'Employee Added Successfully!',
                             'success'
                         )
+                        //get the fetchallEmployees function to display automatically data employee to table
+                        fetchAllEmplyees();
                     }
 
                     $("#add_employee_btn").text('Add Employee');
@@ -180,6 +188,39 @@ data-bs-backdrop="static" aria-hidden="true">
                     $("#addEmployeeModal").modal('hide');
                 }
             });
+        })
+
+        // edit employee ajax request
+        $(document).on('click', '.editIcon', function(e){
+              e.preventDefault();
+
+              let id = $(this).attr('id');
+              $.ajax({
+                url: '{{ route('edit') }}',
+                method: 'get',
+                data: {
+                  id: id,
+                  _token: '{{ csrf_token() }}'
+                },
+                success: function(res){
+                  // set all the previous values into this input field which is the edit form
+                  $("#fname").val(res.first_name);
+                  $("#lname").val(res.last_name);
+                  $("#email").val(res.email);
+                  $("#phone").val(res.phone);
+                  $("#post").val(res.post);
+                  $("#avatar").html(`<img src="storage/images/${res.avatar}" width="100
+                  class="img-fluid img-thumbnail"/>`);
+                  $("#emp_id").val(res.id);
+                  $("#emp_avatar").val(res.avatar);
+                }
+              })
+        })
+
+        // update employee ajax request
+
+        $("edit_employee_form").submit(function(e){
+          e.preventDefault()
         })
     </script>
 </body>

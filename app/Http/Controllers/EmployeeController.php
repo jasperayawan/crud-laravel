@@ -81,4 +81,12 @@ class EmployeeController extends Controller
             echo '<h1 class="text-center text-secondary my-5">No record present in the database!</h1>';
         }
     }
+
+    // handle edit employee ajax request
+    public function edit(Request $request){
+        $id = $request->id;
+        //employee = find the row by Id
+        $emp = Employee::find($id);
+        return response()->json($emp);
+    }
 }
