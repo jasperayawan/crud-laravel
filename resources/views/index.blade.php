@@ -220,7 +220,21 @@ data-bs-backdrop="static" aria-hidden="true">
         // update employee ajax request
 
         $("edit_employee_form").submit(function(e){
-          e.preventDefault()
+          e.preventDefault();
+
+          const formData = new FormData(this);
+          $("edit_employee_btn").text('Updating...');
+          $.ajax({
+            url: '{{ route('update') }}',
+            method: 'post',
+            data: formData,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function(res){
+              console.log(res)
+            }
+          })
         })
     </script>
 </body>
